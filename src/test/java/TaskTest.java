@@ -21,13 +21,13 @@ public class TaskTest {
 
   @Test
   public void Task_instantiatesCorrectly_true() {
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", 1);
     assertEquals(true, myTask instanceof Task);
   }
 
   @Test
   public void getDescription_taskInstantiatesWithDescription_String() {
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", 1);
     assertEquals("Mow the lawn", myTask.getDescription());
   }
 
@@ -37,26 +37,26 @@ public class TaskTest {
   }
   @Test
   public void equals_returnsTrueIfDescriptionsAretheSame() {
-    Task firstTask = new Task("Mow the lawn");
-    Task secondTask = new Task("Mow the lawn");
+    Task firstTask = new Task("Mow the lawn", 1);
+    Task secondTask = new Task("Mow the lawn", 1);
     assertTrue(firstTask.equals(secondTask));
   }
   @Test
   public void save_returnsTrueIfDescriptionsAretheSame() {
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", 1);
     myTask.save();
     assertTrue(Task.all().get(0).equals(myTask));
   }
   @Test
   public void save_assignsIdToObject() {
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", 1);
     myTask.save();
     Task savedTask = Task.all().get(0);
     assertEquals(myTask.getId(), savedTask.getId());
   }
   @Test
   public void find_findsTaskInDatabase_true() {
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", 1);
     myTask.save();
     Task savedTask = Task.find(myTask.getId());
     assertTrue(myTask.equals(savedTask));
